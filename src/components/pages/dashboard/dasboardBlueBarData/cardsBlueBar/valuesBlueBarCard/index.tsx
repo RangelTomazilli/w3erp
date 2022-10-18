@@ -6,14 +6,14 @@ import {
 
 type Props = {
   total: number;
-  percent: string;
+  percent: number;
 };
 
 export const ValuesBlueBarCards = ({ total, percent }: Props) => {
   return (
     <DataBlock>
       <TotalStyled>{total}</TotalStyled>
-      <PercentBackGround>{percent}</PercentBackGround>
+      <PercentBackGround>{percent}%</PercentBackGround>
     </DataBlock>
   );
 };

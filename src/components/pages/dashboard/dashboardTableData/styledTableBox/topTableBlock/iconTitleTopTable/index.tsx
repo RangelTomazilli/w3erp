@@ -7,20 +7,20 @@ import {
 
 type BackgroundProps = {
   background: string;
-  title: string;
+  titleTable: string;
   icon: ReactNode;
   color?: string;
 };
 
 export const IconTitleTopTable = ({
   background,
-  title,
+  titleTable,
   icon,
 }: BackgroundProps) => {
   return (
     <IconAndTitleDiv>
       <BackgroundIcon background={background}>{icon}</BackgroundIcon>
-      <TitleTable>{title}</TitleTable>
+      <TitleTable>{titleTable}</TitleTable>
     </IconAndTitleDiv>
   );
 };

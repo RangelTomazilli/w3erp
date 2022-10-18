@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export function ArrowDownIcon() {
   return (
@@ -18,7 +18,7 @@ export function ArrowDownIcon() {
         d="M13.864 4.803l-.177.177.177-.177a.75.75 0 00-1.06 0L8 9.606 3.197 4.803a.75.75 0 00-1.06 1.06l5.333 5.334a.75.75 0 001.06 0l5.334-5.333a.75.75 0 000-1.061z"
       />
     </svg>
-  )
+  );
 }
 
-export default ArrowDownIcon
+export default ArrowDownIcon;

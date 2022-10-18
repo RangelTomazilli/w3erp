@@ -84,5 +84,5 @@ export const EayeButtonStyled = styled.button`
   background-color: transparent;
   position: absolute;
   right: 14px;
-  top: 17px;
+  top: 20px;
 `;

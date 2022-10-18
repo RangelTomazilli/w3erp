@@ -1,54 +1,23 @@
-import ArrowRightIcon from "../../../../assets/icons/ArrowRight";
+import { ReactNode } from "react";
 import { StyledTableData } from "./StyledTable.Style";
 
-export const StyledTable = () => {
+type TableProps = {
+  header: string[];
+  children: ReactNode;
+};
+
+export const StyledTable = ({ header, children }: TableProps) => {
   return (
     <div>
       <StyledTableData>
         <thead>
-          <th>ID</th>
-          <th>Produto</th>
-          <th>Percentual</th>
-          <th> </th>
+          <tr>
+            {header.map((titleTable) => (
+              <th key={titleTable}>{titleTable}</th>
+            ))}
+          </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>001</td>
-            <td>Papel higiênico</td>
-            <td>-72%</td>
-            <td>{<ArrowRightIcon />}</td>
-          </tr>
-          <tr>
-            <td>002</td>
-            <td>Papel higiênico</td>
-            <td>-72%</td>
-            <td>{<ArrowRightIcon />}</td>
-          </tr>
-          <tr>
-            <td>003</td>
-            <td>Papel higiênico</td>
-            <td>-72%</td>
-            <td>{<ArrowRightIcon />}</td>
-          </tr>
-          <tr>
-            <td>004</td>
-            <td>Papel higiênico</td>
-            <td>-72%</td>
-            <td>{<ArrowRightIcon />}</td>
-          </tr>
-          <tr>
-            <td>005</td>
-            <td>Papel higiênico</td>
-            <td>-72%</td>
-            <td>{<ArrowRightIcon />}</td>
-          </tr>
-          <tr>
-            <td>006</td>
-            <td>Papel higiênico</td>
-            <td>-72%</td>
-            <td>{<ArrowRightIcon />}</td>
-          </tr>
-        </tbody>
+        <tbody>{children}</tbody>
       </StyledTableData>
     </div>
   );

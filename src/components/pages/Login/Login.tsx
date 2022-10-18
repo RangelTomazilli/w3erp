@@ -17,8 +17,8 @@ import { CheckboxRemember } from "../../loginCheckbox";
 import { ForgotPasswordLink } from "../../forgotPassword";
 import EyeIcon from "../../../assets/icons/EyeIcon";
 import EyeOffIcon from "../../../assets/icons/EyeOffLine";
-import { useNavigate } from "react-router-dom";
 import { AuthLogin } from "../../services/Auth";
+// import { useNavigate } from "react-router-dom";
 
 type InputProps = {
   eye: boolean;
@@ -29,32 +29,19 @@ export const Login = ({ eye }: InputProps) => {
   // const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [isShowing, setIsShoing] = useState(!eye);
+  // const navigate = useNavigate() -> Deve-se instanciar para usar o hook para usar
 
   const isPassword = () => setIsShoing(!isShowing);
 
   const ValidateLogin = async () => {
-    const navigate = useNavigate();
-
     const postLogin = await AuthLogin(email, password);
     if (postLogin.logged) {
-      navigate("/dashboard");
+      window.location.href = "/dashboard";
+      // navigate("/dashboard") chamada da função já com o url como argumento.
       return;
     }
     alert(postLogin.message);
   };
-
-  // const validateLogin = async () => {
-
-  //   try {
-  //     setIsLoading(true)
-  //     const result = await AuthLogin.login({email: email, password: password})
-  //     alert(result)
-  //     setIsLoading(false)
-  //     Navigate('/list')
-  //   } catch (error) {
-  //     alert(error as any).message)
-  //   }
-  // };
 
   return (
     <StyledContainer>

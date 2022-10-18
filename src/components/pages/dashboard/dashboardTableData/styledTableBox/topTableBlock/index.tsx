@@ -1,16 +1,21 @@
-import ProductsIcon from "../../../../../../assets/icons/ProductsIcon";
 import { colorsTheme } from "../../../../../theme";
 import { IconTitleTopTable } from "./iconTitleTopTable";
 import { ToggleButtonTop } from "./toggleTopTable";
 import { StyledTopTableBox } from "./TopTableBlock.Style";
 
-export const TopTableBlock = () => {
+type Props = {
+  titleTable: string;
+  icon: React.ReactNode;
+  backgroundIcon: string;
+};
+
+export const TopTableBlock = ({ titleTable, icon, backgroundIcon }: Props) => {
   return (
     <StyledTopTableBox>
       <IconTitleTopTable
-        background={colorsTheme.azul4}
-        icon={<ProductsIcon />}
-        title="Produtos"
+        background={backgroundIcon}
+        icon={icon}
+        titleTable={titleTable}
       />
       <ToggleButtonTop />
     </StyledTopTableBox>

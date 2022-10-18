@@ -16,7 +16,7 @@ export const StyledLabel = styled.div`
   input {
     border: 1px solid #00c247;
     border-radius: 12px;
-    padding: 15px 30px 7px 10px;
+    padding: 15px 30px 15px 10px;
     font-size: 14px;
     align-items: center;
     width: 340px;

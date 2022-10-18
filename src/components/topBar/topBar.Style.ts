@@ -8,6 +8,7 @@ export const TopBarStyle = styled.div`
   width: 84vw;
   align-items: center;
   padding: 20px;
+  z-index: 10;
 `;
 
 export const MenuIconDiv = styled.div`
