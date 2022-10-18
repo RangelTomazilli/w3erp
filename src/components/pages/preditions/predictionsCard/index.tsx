@@ -10,22 +10,24 @@ import {
   TopPredictionCardDiv,
 } from "./PredictionsCard.Styled";
 
-type Props = {
-  name: string;
-  status: string;
-  product?: string;
-  date?: string;
+export type PredictionProps = {
+  id: number;
+  nome: string;
+  produtos: {
+    nome: string;
+    proximaCompra: string;
+  }[];
 };
 
-export const PredictionsCard = ({ name, status, product, date }: Props) => {
+export const PredictionsCard = ({ id, nome, produtos }: PredictionProps) => {
   return (
     <FullPredictionCard>
       <TopPredictionCardDiv>
         <ClientDataBlock>
           <ClientIcon />
           <ClientDataDiv>
-            <ClientName>{name}</ClientName>
-            <ClientStatus>{status}</ClientStatus>
+            <ClientName>{nome}</ClientName>
+            <ClientStatus>Status</ClientStatus>
           </ClientDataDiv>
         </ClientDataBlock>
         <ArrowRightIcon />
@@ -33,22 +35,16 @@ export const PredictionsCard = ({ name, status, product, date }: Props) => {
       <ClientCardContent>
         <table>
           <thead>
-            <th>Produto</th>
+            <th key={id}>Produto</th>
             <th>Próx.Compra</th>
           </thead>
           <tbody>
-            <tr>
-              <td>{product}</td>
-              <td>{date}</td>
-            </tr>
-            <tr>
-              <td>Álcool em gel</td>
-              <td>05/09/22</td>
-            </tr>
-            <tr>
-              <td>Álcool em gel</td>
-              <td>10/09/22</td>
-            </tr>
+            {produtos.map((item) => (
+              <tr>
+                <td>{item.nome}</td>
+                <td>{item.proximaCompra}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </ClientCardContent>

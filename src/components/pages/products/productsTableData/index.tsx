@@ -1,52 +1,22 @@
+import { ReactNode } from "react";
 import { ProductsTable } from "../Products.Style";
 
-export const ProductsTableData = () => {
+export type ProductTableProps = {
+  header: string[];
+  children: ReactNode;
+};
+
+export const ProductsTableData = ({ header, children }: ProductTableProps) => {
   return (
     <ProductsTable>
       <thead>
-        <th>ID</th>
-        <th>Produto</th>
-        <th>Status</th>
-        <th>Percentual</th>
+        <tr>
+          {header.map((titleTable) => (
+            <th key={titleTable}>{titleTable}</th>
+          ))}
+        </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>001</td>
-          <td>Papel higiênico</td>
-          <td>Status</td>
-          <td>-72%</td>
-        </tr>
-        <tr>
-          <td>002</td>
-          <td>Papel higiênico</td>
-          <td>Status</td>
-          <td>-72%</td>
-        </tr>
-        <tr>
-          <td>003</td>
-          <td>Papel higiênico</td>
-          <td>Status</td>
-          <td>-72%</td>
-        </tr>
-        <tr>
-          <td>004</td>
-          <td>Papel higiênico</td>
-          <td>Status</td>
-          <td>-72%</td>
-        </tr>
-        <tr>
-          <td>005</td>
-          <td>Papel higiênico</td>
-          <td>Status</td>
-          <td>-72%</td>
-        </tr>
-        <tr>
-          <td>006</td>
-          <td>Papel higiênico</td>
-          <td>Status</td>
-          <td>-72%</td>
-        </tr>
-      </tbody>
+      <tbody>{children}</tbody>
     </ProductsTable>
   );
 };

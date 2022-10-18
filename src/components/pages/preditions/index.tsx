@@ -1,5 +1,10 @@
+import { useEffect, useState } from "react";
 import SearchIcon from "../../../assets/icons/SearchIcon";
 import { LeftBlueBar } from "../../leftBlueBar/LeftBlueBar";
+import {
+  GetPredictions,
+  StyledPredictionsProps,
+} from "../../services/getPredictions/index.";
 import { TopBar } from "../../topBar";
 import {
   StyledCenterContainer,
@@ -12,9 +17,22 @@ import {
   SearchDiv,
   IconDiv,
   BlockCenterCards,
+  BlockNoFlexDiv,
 } from "./preditions.Style";
 
 export const Preditions = () => {
+  const [prediction, setPrediction] = useState<StyledPredictionsProps>([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const result = await GetPredictions();
+        setPrediction(result);
+      } catch (error) {
+        alert((error as any).message);
+      }
+    })();
+  }, []);
   return (
     <StyledContainer>
       <LeftBlueBar />
@@ -28,56 +46,17 @@ export const Preditions = () => {
               <SearchIcon />
             </IconDiv>
           </SearchDiv>
-          <BlockCenterCards>
-            <PredictionsCard
-              name="Hotel Ibis"
-              status="Status"
-              product="Álcool em gel"
-              date="02/09/2022"
-            />
-            <PredictionsCard
-              name="Hotel Ibis"
-              status="Status"
-              product="Álcool em gel"
-              date="02/09/2022"
-            />
-            <PredictionsCard
-              name="Hotel Ibis"
-              status="Status"
-              product="Álcool em gel"
-              date="02/09/2022"
-            />
-            <PredictionsCard
-              name="Hotel Ibis"
-              status="Status"
-              product="Álcool em gel"
-              date="02/09/2022"
-            />
-            <PredictionsCard
-              name="Hotel Ibis"
-              status="Status"
-              product="Álcool em gel"
-              date="02/09/2022"
-            />
-            <PredictionsCard
-              name="Hotel Ibis"
-              status="Status"
-              product="Álcool em gel"
-              date="02/09/2022"
-            />
-            <PredictionsCard
-              name="Hotel Ibis"
-              status="Status"
-              product="Álcool em gel"
-              date="02/09/2022"
-            />
-            <PredictionsCard
-              name="Hotel Ibis"
-              status="Status"
-              product="Álcool em gel"
-              date="02/09/2022"
-            />
-          </BlockCenterCards>
+          <BlockNoFlexDiv>
+            <BlockCenterCards>
+              {prediction.map((data) => (
+                <PredictionsCard
+                  id={data.id}
+                  nome={data.nome}
+                  produtos={data.produtos}
+                />
+              ))}
+            </BlockCenterCards>
+          </BlockNoFlexDiv>
         </BlockCenterDiv>
       </StyledCenterContainer>
     </StyledContainer>

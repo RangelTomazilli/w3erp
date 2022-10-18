@@ -15,11 +15,18 @@ export const BlockCenterDiv = styled.div`
   width: 100%;
   flex-direction: column;
 `;
-export const BlockCenterCards = styled.div`
-  display: flex;
+
+export const BlockNoFlexDiv = styled.div`
   margin-top: 50px;
   width: 100%;
+  height: 600px;
+  overflow-y: auto;
+`;
+
+export const BlockCenterCards = styled.div`
+  display: flex;
   flex-wrap: wrap;
+  width: 80vw;
   overflow-y: auto;
 `;
 

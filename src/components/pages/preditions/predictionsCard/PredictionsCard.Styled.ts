@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colorsTheme } from "../../../theme";
 
 export const FullPredictionCard = styled.div`
-  width: 300px;
+  width: 297px;
   height: 240px;
   box-shadow: 0px 0px 25px rgba(163, 163, 163, 0.2);
   border-radius: 24px;

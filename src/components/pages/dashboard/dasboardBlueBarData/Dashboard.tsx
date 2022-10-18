@@ -133,10 +133,10 @@ export const Dashboard = () => {
         </BlueBarDataStyle>
         <StyledLowCenterContainer>
           <DashboardTableData
-            backgroundIcon={colorsTheme.azul4}
-            icon={<ProductsIcon />}
             titleTable="Produtos"
             header={TitleTableProduct}
+            backgroundIcon={colorsTheme.azul4}
+            icon={<ProductsIcon />}
           >
             {tableProduct.map((apiData) => (
               <tr key={apiData.id}>

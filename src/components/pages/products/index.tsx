@@ -1,6 +1,11 @@
+import { useEffect, useState } from "react";
 import FilterIcon from "../../../assets/icons/FilterIcon";
 import SearchIcon from "../../../assets/icons/SearchIcon";
 import { LeftBlueBar } from "../../leftBlueBar/LeftBlueBar";
+import {
+  GetProducts,
+  StyledProductTableProps,
+} from "../../services/getProduducts";
 import { TopBar } from "../../topBar";
 import {
   StyledCenterContainer,
@@ -18,7 +23,22 @@ import {
 } from "./Products.Style";
 import { ProductsTableData } from "./productsTableData";
 
+const TitleTableProduct = ["ID", "Produto", "Status", "Percentual"];
+
 export const Products = () => {
+  const [tableProduct, setTableProduct] = useState<StyledProductTableProps>([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const result = await GetProducts();
+        setTableProduct(result);
+      } catch (error) {
+        alert((error as any).message);
+      }
+    })();
+  }, []);
+
   return (
     <StyledContainer>
       <LeftBlueBar />
@@ -39,7 +59,16 @@ export const Products = () => {
                 <FilterIcon />
               </BackgroundFilterIcon>
             </SearchPlusFilterBlock>
-            <ProductsTableData />
+            <ProductsTableData header={TitleTableProduct}>
+              {tableProduct.map((apiData) => (
+                <tr key={apiData.id}>
+                  <td>{apiData.id}</td>
+                  <td>{apiData.nome}</td>
+                  <td>{apiData.classificacao}</td>
+                  <td>{apiData.percentual}%</td>
+                </tr>
+              ))}
+            </ProductsTableData>
           </ProductsBlock>
         </BlockCenterDiv>
       </StyledCenterContainer>

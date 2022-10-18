@@ -1,17 +1,20 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { CardLeftBlueBarStyle } from "./CardLeftBlueBar.Style";
 
 type Props = {
   icon: ReactNode;
   name: string;
-  // link: () => {};
+  link: string;
 };
 
-export const CardLeftBlueBar = ({ icon, name }: Props) => {
+export const CardLeftBlueBar = ({ icon, name, link }: Props) => {
   return (
-    <CardLeftBlueBarStyle>
-      {icon}
-      <span>{name}</span>
+    <CardLeftBlueBarStyle to={link}>
+      <div>
+        {icon}
+        <span>{name}</span>
+      </div>
     </CardLeftBlueBarStyle>
   );
 };
